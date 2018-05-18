@@ -12,19 +12,17 @@ const codes = [
 ];
 
 function init() {
-var index = 0;
-  document.addEventListener('keydown', function (e) {
-    const key = parseInt(e.detail || e.which);
+  let idx = 0
 
-    if (key === code[index]) {
-      index++;
-
-      if (index === code.length - 1) {
-        window.alert("YOU DID IT!");
-        index = 0;
-      }
-    } else {
-      index = 0;
+  document.body.addEventListener("keydown", (e) => {
+    const key = e.key
+    
+    idx = (codes[idx] === key) ? ++idx : 0
+    
+    if (idx === codes.length) {
+      window.alert("Hurray!");
+      idx = 0
     }
-  }, false);
+    
+  });
 }
